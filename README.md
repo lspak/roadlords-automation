@@ -9,8 +9,25 @@ Automated E2E testing framework for Roadlords truck GPS navigation app.
 - **Video Recording**: Screen capture during test execution
 - **UI Verification**: Visual regression testing with SSIM comparison
 - **HTML Reports**: Detailed reports with memory graphs, video, and screenshots
+- **Web GUI**: Simple interface for running tests
 
 ## Quick Start
+
+### Option 1: Auto-install (Recommended)
+
+**Mac:**
+```bash
+./setup.command
+```
+
+**Windows:**
+```bash
+setup.bat
+```
+
+This will install all dependencies (Python, Node, Appium, ADB).
+
+### Option 2: Manual Setup
 
 ```bash
 # 1. Setup virtual environment
@@ -22,7 +39,29 @@ pip install -r requirements.txt
 appium
 
 # 3. Run E2E test
-python tests/e2e/test_bratislava_svidnik.py
+pytest tests/e2e/ -v
+```
+
+## Running Tests
+
+### With Web GUI
+
+**Mac:**
+```bash
+./Run\ Roadlords\ Test.command
+```
+
+**Windows:**
+```bash
+Run Roadlords Test.bat
+```
+
+Opens a browser interface where you can start Appium and run tests.
+
+### From Command Line
+
+```bash
+pytest tests/e2e/test_navigation_route_following.py -v
 ```
 
 ## Project Structure
@@ -31,83 +70,65 @@ python tests/e2e/test_bratislava_svidnik.py
 roadlords-automation/
 ├── tests/
 │   ├── e2e/
-│   │   └── test_bratislava_svidnik.py    # Main E2E navigation test
-│   └── conftest.py                        # Pytest fixtures
+│   │   └── test_navigation_route_following.py  # Main E2E navigation test
+│   └── conftest.py                              # Pytest fixtures
 ├── src/
 │   ├── gps/
-│   │   └── gps_mock_controller.py        # GPS Mock app controller
+│   │   └── gps_mock_controller.py              # GPS Mock app controller
 │   ├── utils/
-│   │   ├── memory_monitor.py             # Memory tracking
-│   │   ├── video_recorder.py             # Screen recording
-│   │   ├── ui_verifier.py                # Visual regression
-│   │   ├── report_generator.py           # HTML report generation
-│   │   ├── driver_factory.py             # Appium driver setup
-│   │   ├── wait_utils.py                 # Custom wait utilities
-│   │   └── adb_utils.py                  # ADB utilities
-│   └── data/routes/
-│       └── pifflova_sustekova_petrzalka.gpx  # Test route
-├── android-gps-mock/                      # GPS Mock Android app source
-├── config/
-│   ├── config.yaml                        # Main configuration
-│   └── capabilities/                      # Appium capabilities
-├── reports/                               # Generated reports
-└── docs/                                  # Documentation
+│   │   ├── memory_monitor.py                   # Memory tracking
+│   │   ├── video_recorder.py                   # Screen recording
+│   │   ├── ui_verifier.py                      # Visual regression
+│   │   ├── report_generator.py                 # HTML report generation
+│   │   └── driver_factory.py                   # Appium driver setup
+│   └── data/routes/                            # GPX route files
+├── android-gps-mock/                           # GPS Mock Android app source
+├── app/
+│   └── roadlords_tester_web.py                 # Web GUI
+├── config/                                     # Configuration files
+├── setup.command / setup.bat                   # Auto-install scripts
+├── uninstall.command / uninstall.bat           # Uninstall scripts
+└── docs/                                       # Documentation
 ```
 
 ## Requirements
 
 - Python 3.11+
+- Node.js 18+
 - Appium 2.x
 - Android device with Developer Options enabled
-- GPS Mock app installed (from `android-gps-mock/`)
+- GPS Mock app installed
 
 ## GPS Mock App Setup
 
-The GPS Mock app provides stable GPS simulation via ADB broadcasts.
-
 ```bash
-# Build and install
-cd android-gps-mock
-./gradlew assembleDebug
-adb install app/build/outputs/apk/debug/app-debug.apk
+# Install pre-built APK
+adb install android-gps-mock/gps-mock.apk
 
 # Enable as mock location provider
 # Settings → Developer options → Select mock location app → GPS Mock
 ```
 
-## Test Configuration
-
-Edit `tests/e2e/test_bratislava_svidnik.py` to configure:
-
-```python
-DEVICE_UDID = "your-device-id"    # ADB device ID
-START_LAT = 48.1270               # Starting latitude
-START_LON = 17.1072               # Starting longitude
-DESTINATION = "Sustekova 5"       # Search destination
-GPS_SPEED_KMH = 50.0              # GPS playback speed
-```
-
-## UI Verification
-
-Run in capture mode to create baseline:
-```python
-UI_VERIFY_MODE = "capture"
-```
-
-Run in verify mode to compare against baseline:
-```python
-UI_VERIFY_MODE = "verify"
-```
-
 ## Generated Reports
 
 Reports are saved to `reports/e2e/`:
-- `stress_report_*.html` - Interactive HTML report with memory graph
-- `videos/` - Screen recordings
-- `screenshots/` - Navigation screenshots
-- `memory_*.csv` - Raw memory data
+- `stress_report_*.html` - Interactive HTML report with memory graph and video
+- Screenshots comparison (baseline vs actual)
 
 ## Documentation
 
-- [AUTOMATION_REPORT.md](./AUTOMATION_REPORT.md) - Detailed automation guide
-- [CLAUDE.md](./CLAUDE.md) - AI assistant instructions
+- [AUTOMATION_GUIDE.md](./AUTOMATION_GUIDE.md) - Complete guide with architecture, scaling, CI/CD
+- [SETUP.md](./SETUP.md) - Quick start guide
+- [docs/APPIUM_INSPECTOR_GUIDE.md](./docs/APPIUM_INSPECTOR_GUIDE.md) - Element inspection guide
+
+## Uninstall
+
+**Mac:**
+```bash
+./uninstall.command
+```
+
+**Windows:**
+```bash
+uninstall.bat
+```
