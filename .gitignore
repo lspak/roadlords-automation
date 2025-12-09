@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Test artifacts
+reports/
+logs/
+screenshots/
+*.log
+
+# Allure
+.allure/
+allure-results/
+allure-report/
+
+# Environment
+.env
+.env.local
+
+# APK files (download separately)
+apps/*.apk
+
+# Pytest cache
+.pytest_cache/
+.cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Serena
+.serena/
+
+# Claude
+CLAUDE.md

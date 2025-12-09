@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="RoadlordsTest">
+  <metadata>
+    <name>Pifflova 2 to Sutekova 5 - Bratislava</name>
+    <desc>Detailed route through Bratislava streets</desc>
+  </metadata>
+  <trk>
+    <name>Pifflova to Sutekova</name>
+    <trkseg>
+      <!-- Start: Pifflova 2, Petrzalka -->
+      <trkpt lat="48.1052" lon="17.1089">
+        <name>Start - Pifflova 2</name>
+      </trkpt>
+      <!-- Along Pifflova street -->
+      <trkpt lat="48.1055" lon="17.1095"/>
+      <trkpt lat="48.1058" lon="17.1102"/>
+      <!-- Turn onto Ruzinovska -->
+      <trkpt lat="48.1062" lon="17.1108"/>
+      <trkpt lat="48.1068" lon="17.1115"/>
+      <trkpt lat="48.1075" lon="17.1120"/>
+      <!-- Heading towards Stary most (Old Bridge) -->
+      <trkpt lat="48.1082" lon="17.1125"/>
+      <trkpt lat="48.1090" lon="17.1128"/>
+      <trkpt lat="48.1098" lon="17.1130"/>
+      <trkpt lat="48.1105" lon="17.1132"/>
+      <!-- Approaching bridge -->
+      <trkpt lat="48.1115" lon="17.1133"/>
+      <trkpt lat="48.1125" lon="17.1134"/>
+      <trkpt lat="48.1135" lon="17.1135"/>
+      <!-- Crossing Danube - Stary most -->
+      <trkpt lat="48.1145" lon="17.1135"/>
+      <trkpt lat="48.1155" lon="17.1134"/>
+      <trkpt lat="48.1165" lon="17.1133"/>
+      <trkpt lat="48.1175" lon="17.1132"/>
+      <!-- After bridge - Sturova -->
+      <trkpt lat="48.1185" lon="17.1130"/>
+      <trkpt lat="48.1195" lon="17.1128"/>
+      <trkpt lat="48.1205" lon="17.1125"/>
+      <!-- Turn towards Safarikovo namestie -->
+      <trkpt lat="48.1212" lon="17.1120"/>
+      <trkpt lat="48.1218" lon="17.1115"/>
+      <trkpt lat="48.1225" lon="17.1110"/>
+      <!-- Along embankment -->
+      <trkpt lat="48.1232" lon="17.1105"/>
+      <trkpt lat="48.1238" lon="17.1100"/>
+      <trkpt lat="48.1245" lon="17.1095"/>
+      <!-- Towards Racianske myto area -->
+      <trkpt lat="48.1252" lon="17.1092"/>
+      <trkpt lat="48.1260" lon="17.1090"/>
+      <trkpt lat="48.1268" lon="17.1088"/>
+      <trkpt lat="48.1275" lon="17.1085"/>
+      <!-- Continuing north -->
+      <trkpt lat="48.1282" lon="17.1082"/>
+      <trkpt lat="48.1290" lon="17.1080"/>
+      <trkpt lat="48.1298" lon="17.1078"/>
+      <trkpt lat="48.1305" lon="17.1075"/>
+      <!-- Approaching Sutekova -->
+      <trkpt lat="48.1312" lon="17.1072"/>
+      <trkpt lat="48.1318" lon="17.1070"/>
+      <trkpt lat="48.1325" lon="17.1068"/>
+      <trkpt lat="48.1332" lon="17.1065"/>
+      <!-- Turn onto Sutekova -->
+      <trkpt lat="48.1338" lon="17.1062"/>
+      <trkpt lat="48.1342" lon="17.1058"/>
+      <trkpt lat="48.1345" lon="17.1055"/>
+      <!-- End: Sutekova 5 -->
+      <trkpt lat="48.1348" lon="17.1052">
+        <name>End - Sutekova 5</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

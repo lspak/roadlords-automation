@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="RoadlordsTest">
+  <metadata>
+    <name>Pifflova 2 to Sutekova 5 - Real Road Route</name>
+    <desc>Detailed route following actual roads through Bratislava</desc>
+  </metadata>
+  <trk>
+    <name>Pifflova to Sutekova</name>
+    <trkseg>
+      <!-- === START: Pifflova 2, Petrzalka (48.1270, 17.1072) === -->
+      <trkpt lat="48.12700" lon="17.10720"><name>Start - Pifflova 2</name></trkpt>
+
+      <!-- Along Pifflova towards Pajstunska -->
+      <trkpt lat="48.12720" lon="17.10750"/>
+      <trkpt lat="48.12740" lon="17.10780"/>
+      <trkpt lat="48.12760" lon="17.10810"/>
+
+      <!-- Turn north on Pajstunska -->
+      <trkpt lat="48.12800" lon="17.10830"/>
+      <trkpt lat="48.12850" lon="17.10850"/>
+      <trkpt lat="48.12900" lon="17.10870"/>
+      <trkpt lat="48.12950" lon="17.10890"/>
+
+      <!-- Towards Einsteinova -->
+      <trkpt lat="48.13000" lon="17.10900"/>
+      <trkpt lat="48.13050" lon="17.10910"/>
+      <trkpt lat="48.13100" lon="17.10920"/>
+      <trkpt lat="48.13150" lon="17.10930"/>
+
+      <!-- On Einsteinova heading east towards bridge -->
+      <trkpt lat="48.13200" lon="17.10950"/>
+      <trkpt lat="48.13220" lon="17.10980"/>
+      <trkpt lat="48.13240" lon="17.11020"/>
+      <trkpt lat="48.13260" lon="17.11060"/>
+
+      <!-- Approaching Most Apollo -->
+      <trkpt lat="48.13280" lon="17.11100"/>
+      <trkpt lat="48.13300" lon="17.11150"/>
+      <trkpt lat="48.13320" lon="17.11200"/>
+      <trkpt lat="48.13340" lon="17.11250"/>
+
+      <!-- === CROSSING DANUBE - Most Apollo === -->
+      <trkpt lat="48.13400" lon="17.11300"/>
+      <trkpt lat="48.13500" lon="17.11350"/>
+      <trkpt lat="48.13600" lon="17.11400"/>
+      <trkpt lat="48.13700" lon="17.11450"/>
+      <trkpt lat="48.13800" lon="17.11480"/>
+
+      <!-- After bridge - Pristavna/Landererova -->
+      <trkpt lat="48.13900" lon="17.11500"/>
+      <trkpt lat="48.14000" lon="17.11480"/>
+      <trkpt lat="48.14100" lon="17.11460"/>
+      <trkpt lat="48.14200" lon="17.11440"/>
+
+      <!-- Dostojevskeho rad heading north -->
+      <trkpt lat="48.14300" lon="17.11420"/>
+      <trkpt lat="48.14400" lon="17.11400"/>
+      <trkpt lat="48.14500" lon="17.11380"/>
+      <trkpt lat="48.14600" lon="17.11360"/>
+
+      <!-- Towards Safarikovo namestie -->
+      <trkpt lat="48.14700" lon="17.11340"/>
+      <trkpt lat="48.14800" lon="17.11320"/>
+      <trkpt lat="48.14900" lon="17.11300"/>
+      <trkpt lat="48.15000" lon="17.11280"/>
+
+      <!-- Sturova ulica -->
+      <trkpt lat="48.15100" lon="17.11260"/>
+      <trkpt lat="48.15200" lon="17.11240"/>
+      <trkpt lat="48.15300" lon="17.11220"/>
+      <trkpt lat="48.15400" lon="17.11200"/>
+
+      <!-- Towards Hodzovo namestie -->
+      <trkpt lat="48.15500" lon="17.11180"/>
+      <trkpt lat="48.15600" lon="17.11160"/>
+      <trkpt lat="48.15700" lon="17.11150"/>
+      <trkpt lat="48.15800" lon="17.11140"/>
+
+      <!-- Stefanikova/Palisady -->
+      <trkpt lat="48.15900" lon="17.11130"/>
+      <trkpt lat="48.16000" lon="17.11140"/>
+      <trkpt lat="48.16100" lon="17.11150"/>
+      <trkpt lat="48.16200" lon="17.11160"/>
+
+      <!-- Towards Racianske myto -->
+      <trkpt lat="48.16300" lon="17.11170"/>
+      <trkpt lat="48.16400" lon="17.11180"/>
+      <trkpt lat="48.16500" lon="17.11190"/>
+      <trkpt lat="48.16600" lon="17.11200"/>
+
+      <!-- Approaching Sutekova -->
+      <trkpt lat="48.16650" lon="17.11210"/>
+      <trkpt lat="48.16700" lon="17.11220"/>
+      <trkpt lat="48.16720" lon="17.11240"/>
+      <trkpt lat="48.16740" lon="17.11260"/>
+
+      <!-- On Sutekova -->
+      <trkpt lat="48.16760" lon="17.11280"/>
+      <trkpt lat="48.16780" lon="17.11300"/>
+
+      <!-- === END: Sutekova 5 === -->
+      <trkpt lat="48.16800" lon="17.11320"><name>End - Sutekova 5</name></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

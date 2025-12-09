@@ -1,0 +1,38 @@
+# BrowserStack Cloud Capabilities
+platformName: Android
+platformVersion: "13.0"
+deviceName: "Samsung Galaxy S23"
+automationName: UiAutomator2
+
+# App will be uploaded to BrowserStack
+# app: "bs://APP_HASH_HERE"
+
+# BrowserStack credentials (from environment)
+# browserstack.user: "${BROWSERSTACK_USER}"
+# browserstack.key: "${BROWSERSTACK_KEY}"
+
+# BrowserStack specific options
+bstack:options:
+  projectName: "Roadlords Automation"
+  buildName: "${BUILD_NAME}"
+  sessionName: "${TEST_NAME}"
+  debug: true
+  networkLogs: true
+  video: true
+  interactiveDebugging: true
+
+  # GPS simulation support
+  gpsLocation: "48.1486,17.1077"  # Bratislava - can be changed per test
+
+  # Device settings
+  deviceOrientation: portrait
+  local: false
+
+  # Timeouts
+  idleTimeout: 300
+
+# Appium options
+appium:options:
+  autoGrantPermissions: true
+  noReset: false
+  newCommandTimeout: 300

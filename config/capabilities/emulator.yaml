@@ -1,0 +1,21 @@
+# Android Emulator Capabilities
+platformName: Android
+platformVersion: "14"
+deviceName: Pixel_7_API_34
+automationName: UiAutomator2
+app: ./apps/roadlords.apk
+appPackage: com.roadlords.android
+appActivity: .MainActivity
+noReset: false
+fullReset: false
+autoGrantPermissions: true
+newCommandTimeout: 300
+adbExecTimeout: 60000
+
+# UIAutomator2 specific
+uiautomator2ServerLaunchTimeout: 60000
+uiautomator2ServerInstallTimeout: 60000
+
+# GPS mock support (emulator handles this natively)
+locationServicesEnabled: true
+locationServicesAuthorized: true

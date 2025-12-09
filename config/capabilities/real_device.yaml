@@ -1,0 +1,28 @@
+# Real Android Device Capabilities
+platformName: Android
+automationName: UiAutomator2
+appPackage: com.roadlords.android
+appActivity: com.sygic.profi.platform.splashscreen.feature.ui.main.SplashScreenActivity
+noReset: true
+fullReset: false
+autoGrantPermissions: true
+autoLaunch: true
+newCommandTimeout: 300
+appWaitActivity: "*"
+appWaitDuration: 30000
+
+# Device specific - set via environment or override
+udid: "SCAIOC641923K8V"
+# platformVersion: "13"
+
+# UIAutomator2 specific
+uiautomator2ServerLaunchTimeout: 60000
+uiautomator2ServerInstallTimeout: 60000
+skipServerInstallation: false
+
+# GPS mock - requires Appium Settings app
+locationServicesEnabled: true
+locationServicesAuthorized: true
+
+# For mock location on real device
+# Requires: Developer Options > Select mock location app > Appium Settings

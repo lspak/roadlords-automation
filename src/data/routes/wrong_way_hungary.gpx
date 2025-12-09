@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="RoadlordsAutomation">
+  <metadata>
+    <name>Wrong Way - Bratislava towards Hungary</name>
+    <desc>Route going southeast towards Hungary instead of west to Vienna. Used to trigger route recomputes.</desc>
+  </metadata>
+  <trk>
+    <name>Wrong Way Hungary</name>
+    <trkseg>
+      <!-- Start: Bratislava center (same as navigation start) -->
+      <trkpt lat="48.1486" lon="17.1077"><ele>140</ele></trkpt>
+      <trkpt lat="48.1475" lon="17.1100"><ele>140</ele></trkpt>
+      <trkpt lat="48.1460" lon="17.1130"><ele>138</ele></trkpt>
+      <trkpt lat="48.1445" lon="17.1160"><ele>136</ele></trkpt>
+      <trkpt lat="48.1430" lon="17.1190"><ele>135</ele></trkpt>
+      <!-- Going southeast on Prístavná -->
+      <trkpt lat="48.1410" lon="17.1220"><ele>134</ele></trkpt>
+      <trkpt lat="48.1390" lon="17.1250"><ele>133</ele></trkpt>
+      <trkpt lat="48.1370" lon="17.1280"><ele>132</ele></trkpt>
+      <trkpt lat="48.1350" lon="17.1310"><ele>131</ele></trkpt>
+      <trkpt lat="48.1330" lon="17.1340"><ele>130</ele></trkpt>
+      <!-- Continuing towards Petržalka/Hungary direction -->
+      <trkpt lat="48.1310" lon="17.1370"><ele>130</ele></trkpt>
+      <trkpt lat="48.1290" lon="17.1400"><ele>129</ele></trkpt>
+      <trkpt lat="48.1270" lon="17.1430"><ele>128</ele></trkpt>
+      <trkpt lat="48.1250" lon="17.1460"><ele>127</ele></trkpt>
+      <trkpt lat="48.1230" lon="17.1490"><ele>126</ele></trkpt>
+      <!-- Past Petržalka towards border -->
+      <trkpt lat="48.1210" lon="17.1520"><ele>125</ele></trkpt>
+      <trkpt lat="48.1190" lon="17.1550"><ele>124</ele></trkpt>
+      <trkpt lat="48.1170" lon="17.1580"><ele>123</ele></trkpt>
+      <trkpt lat="48.1150" lon="17.1610"><ele>122</ele></trkpt>
+      <trkpt lat="48.1130" lon="17.1640"><ele>121</ele></trkpt>
+      <!-- Approaching Rajka (Hungary) -->
+      <trkpt lat="48.1110" lon="17.1670"><ele>120</ele></trkpt>
+      <trkpt lat="48.1090" lon="17.1700"><ele>119</ele></trkpt>
+      <trkpt lat="48.1070" lon="17.1730"><ele>118</ele></trkpt>
+      <trkpt lat="48.1050" lon="17.1760"><ele>117</ele></trkpt>
+      <trkpt lat="48.1030" lon="17.1790"><ele>116</ele></trkpt>
+      <!-- Further into wrong direction -->
+      <trkpt lat="48.1010" lon="17.1820"><ele>115</ele></trkpt>
+      <trkpt lat="48.0990" lon="17.1850"><ele>114</ele></trkpt>
+      <trkpt lat="48.0970" lon="17.1880"><ele>113</ele></trkpt>
+      <trkpt lat="48.0950" lon="17.1910"><ele>112</ele></trkpt>
+      <trkpt lat="48.0930" lon="17.1940"><ele>111</ele></trkpt>
+      <!-- Continue southeast -->
+      <trkpt lat="48.0910" lon="17.1970"><ele>110</ele></trkpt>
+      <trkpt lat="48.0890" lon="17.2000"><ele>109</ele></trkpt>
+      <trkpt lat="48.0870" lon="17.2030"><ele>108</ele></trkpt>
+      <trkpt lat="48.0850" lon="17.2060"><ele>107</ele></trkpt>
+      <trkpt lat="48.0830" lon="17.2090"><ele>106</ele></trkpt>
+      <!-- More points for longer route -->
+      <trkpt lat="48.0810" lon="17.2120"><ele>105</ele></trkpt>
+      <trkpt lat="48.0790" lon="17.2150"><ele>104</ele></trkpt>
+      <trkpt lat="48.0770" lon="17.2180"><ele>103</ele></trkpt>
+      <trkpt lat="48.0750" lon="17.2210"><ele>102</ele></trkpt>
+      <trkpt lat="48.0730" lon="17.2240"><ele>101</ele></trkpt>
+      <trkpt lat="48.0710" lon="17.2270"><ele>100</ele></trkpt>
+      <trkpt lat="48.0690" lon="17.2300"><ele>99</ele></trkpt>
+      <trkpt lat="48.0670" lon="17.2330"><ele>98</ele></trkpt>
+      <trkpt lat="48.0650" lon="17.2360"><ele>97</ele></trkpt>
+      <trkpt lat="48.0630" lon="17.2390"><ele>96</ele></trkpt>
+      <!-- Final stretch -->
+      <trkpt lat="48.0610" lon="17.2420"><ele>95</ele></trkpt>
+      <trkpt lat="48.0590" lon="17.2450"><ele>94</ele></trkpt>
+      <trkpt lat="48.0570" lon="17.2480"><ele>93</ele></trkpt>
+      <trkpt lat="48.0550" lon="17.2510"><ele>92</ele></trkpt>
+      <trkpt lat="48.0530" lon="17.2540"><ele>91</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

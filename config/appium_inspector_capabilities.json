@@ -1,0 +1,13 @@
+{
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "ASUSAI2501C",
+  "appium:udid": "SCAIOC641923K8V",
+  "appium:appPackage": "com.roadlords.android",
+  "appium:appActivity": "com.sygic.profi.platform.splashscreen.feature.ui.main.SplashScreenActivity",
+  "appium:noReset": true,
+  "appium:autoGrantPermissions": true,
+  "appium:newCommandTimeout": 300,
+  "appium:appWaitActivity": "*",
+  "appium:appWaitDuration": 30000
+}

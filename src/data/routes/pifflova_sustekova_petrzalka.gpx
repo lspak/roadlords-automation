@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="OSRM">
+  <metadata>
+    <name>Pifflova 2 to Sustekova 5 - Real Road Route from OSRM (smoothed)</name>
+  </metadata>
+  <trk>
+    <name>Pifflova to Sustekova - Real Streets</name>
+    <trkseg>
+      <!-- Start: Pifflova -->
+      <trkpt lat="48.127251" lon="17.10722"/>
+      <trkpt lat="48.127224" lon="17.107954"/>
+      <trkpt lat="48.127199" lon="17.108861"/>
+      <trkpt lat="48.127172" lon="17.109782"/>
+      <trkpt lat="48.127167" lon="17.109957"/>
+      <!-- Turn north -->
+      <trkpt lat="48.127718" lon="17.110008"/>
+      <trkpt lat="48.128041" lon="17.110034"/>
+      <trkpt lat="48.128198" lon="17.110042"/>
+      <trkpt lat="48.128188" lon="17.110341"/>
+      <trkpt lat="48.128181" lon="17.110537"/>
+      <!-- Long straight section east -->
+      <trkpt lat="48.128132" lon="17.111889"/>
+      <trkpt lat="48.128079" lon="17.113498"/>
+      <trkpt lat="48.128047" lon="17.11395"/>
+      <trkpt lat="48.128026" lon="17.1145"/>
+      <trkpt lat="48.128004" lon="17.115201"/>
+      <trkpt lat="48.127931" lon="17.115979"/>
+      <trkpt lat="48.127909" lon="17.116436"/>
+      <trkpt lat="48.127876" lon="17.116974"/>
+      <trkpt lat="48.127865" lon="17.117369"/>
+      <trkpt lat="48.127863" lon="17.117745"/>
+      <!-- Continue east -->
+      <trkpt lat="48.127827" lon="17.119062"/>
+      <trkpt lat="48.127811" lon="17.11963"/>
+      <trkpt lat="48.127777" lon="17.12066"/>
+      <trkpt lat="48.127736" lon="17.121751"/>
+      <trkpt lat="48.127716" lon="17.122299"/>
+      <trkpt lat="48.127686" lon="17.123076"/>
+      <trkpt lat="48.127658" lon="17.123662"/>
+      <trkpt lat="48.127636" lon="17.124418"/>
+      <!-- Turn north to Sustekova -->
+      <trkpt lat="48.127708" lon="17.124574"/>
+      <trkpt lat="48.127981" lon="17.124593"/>
+      <trkpt lat="48.128396" lon="17.124619"/>
+      <trkpt lat="48.128844" lon="17.124649"/>
+      <!-- End: Sustekova 5 -->
+      <trkpt lat="48.128854" lon="17.124887"/>
+    </trkseg>
+  </trk>
+</gpx>

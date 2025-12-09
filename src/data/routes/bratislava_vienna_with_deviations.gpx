@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="RoadlordsAutomation">
+  <metadata>
+    <name>Bratislava to Vienna with Wrong Turns</name>
+    <desc>Route from Bratislava towards Vienna with 3 deliberate wrong turns to trigger route recomputes</desc>
+  </metadata>
+  <trk>
+    <name>Vienna Route with Deviations</name>
+    <trkseg>
+      <!-- ============================================ -->
+      <!-- PHASE 1: Start in Bratislava, go towards Vienna (correct direction) -->
+      <!-- Duration: ~25 seconds at 90km/h -->
+      <!-- ============================================ -->
+
+      <!-- Start: Bratislava center -->
+      <trkpt lat="48.1486" lon="17.1077"><ele>140</ele></trkpt>
+      <trkpt lat="48.1490" lon="17.1050"><ele>140</ele></trkpt>
+      <trkpt lat="48.1495" lon="17.1020"><ele>139</ele></trkpt>
+      <trkpt lat="48.1500" lon="17.0990"><ele>138</ele></trkpt>
+      <trkpt lat="48.1505" lon="17.0960"><ele>137</ele></trkpt>
+      <!-- Going west on Einsteinova -->
+      <trkpt lat="48.1510" lon="17.0930"><ele>136</ele></trkpt>
+      <trkpt lat="48.1512" lon="17.0900"><ele>135</ele></trkpt>
+      <trkpt lat="48.1515" lon="17.0870"><ele>134</ele></trkpt>
+      <trkpt lat="48.1518" lon="17.0840"><ele>133</ele></trkpt>
+      <trkpt lat="48.1520" lon="17.0810"><ele>132</ele></trkpt>
+      <!-- Approaching highway D2 -->
+      <trkpt lat="48.1525" lon="17.0780"><ele>131</ele></trkpt>
+      <trkpt lat="48.1530" lon="17.0750"><ele>130</ele></trkpt>
+      <trkpt lat="48.1535" lon="17.0720"><ele>130</ele></trkpt>
+      <trkpt lat="48.1540" lon="17.0690"><ele>129</ele></trkpt>
+      <trkpt lat="48.1545" lon="17.0660"><ele>128</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- WRONG TURN 1: Driver misses exit, goes south instead of west -->
+      <!-- Duration: ~15 seconds -->
+      <!-- ============================================ -->
+
+      <!-- Wrong turn - going south towards Petržalka -->
+      <trkpt lat="48.1540" lon="17.0650"><ele>128</ele></trkpt>
+      <trkpt lat="48.1530" lon="17.0645"><ele>128</ele></trkpt>
+      <trkpt lat="48.1520" lon="17.0640"><ele>127</ele></trkpt>
+      <trkpt lat="48.1510" lon="17.0635"><ele>127</ele></trkpt>
+      <trkpt lat="48.1500" lon="17.0630"><ele>126</ele></trkpt>
+      <trkpt lat="48.1490" lon="17.0625"><ele>126</ele></trkpt>
+      <trkpt lat="48.1480" lon="17.0620"><ele>125</ele></trkpt>
+      <trkpt lat="48.1470" lon="17.0615"><ele>125</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- CORRECTION 1: Driver realizes mistake, returns to route -->
+      <!-- Goes back north-west -->
+      <!-- ============================================ -->
+
+      <trkpt lat="48.1475" lon="17.0600"><ele>125</ele></trkpt>
+      <trkpt lat="48.1480" lon="17.0580"><ele>126</ele></trkpt>
+      <trkpt lat="48.1490" lon="17.0560"><ele>127</ele></trkpt>
+      <trkpt lat="48.1500" lon="17.0540"><ele>128</ele></trkpt>
+      <trkpt lat="48.1510" lon="17.0520"><ele>129</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- PHASE 2: Back on correct route towards Vienna -->
+      <!-- Duration: ~25 seconds -->
+      <!-- ============================================ -->
+
+      <!-- On D2 highway heading west -->
+      <trkpt lat="48.1520" lon="17.0500"><ele>130</ele></trkpt>
+      <trkpt lat="48.1525" lon="17.0470"><ele>130</ele></trkpt>
+      <trkpt lat="48.1530" lon="17.0440"><ele>129</ele></trkpt>
+      <trkpt lat="48.1535" lon="17.0410"><ele>128</ele></trkpt>
+      <trkpt lat="48.1540" lon="17.0380"><ele>127</ele></trkpt>
+      <trkpt lat="48.1545" lon="17.0350"><ele>126</ele></trkpt>
+      <trkpt lat="48.1550" lon="17.0320"><ele>125</ele></trkpt>
+      <trkpt lat="48.1555" lon="17.0290"><ele>124</ele></trkpt>
+      <trkpt lat="48.1560" lon="17.0260"><ele>123</ele></trkpt>
+      <trkpt lat="48.1565" lon="17.0230"><ele>122</ele></trkpt>
+      <trkpt lat="48.1570" lon="17.0200"><ele>121</ele></trkpt>
+      <trkpt lat="48.1575" lon="17.0170"><ele>120</ele></trkpt>
+      <trkpt lat="48.1580" lon="17.0140"><ele>119</ele></trkpt>
+      <trkpt lat="48.1585" lon="17.0110"><ele>118</ele></trkpt>
+      <trkpt lat="48.1590" lon="17.0080"><ele>117</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- WRONG TURN 2: Driver takes wrong exit, goes north -->
+      <!-- Duration: ~15 seconds -->
+      <!-- ============================================ -->
+
+      <!-- Wrong turn - going north towards Devín -->
+      <trkpt lat="48.1600" lon="17.0070"><ele>117</ele></trkpt>
+      <trkpt lat="48.1615" lon="17.0065"><ele>118</ele></trkpt>
+      <trkpt lat="48.1630" lon="17.0060"><ele>119</ele></trkpt>
+      <trkpt lat="48.1645" lon="17.0055"><ele>120</ele></trkpt>
+      <trkpt lat="48.1660" lon="17.0050"><ele>121</ele></trkpt>
+      <trkpt lat="48.1675" lon="17.0045"><ele>122</ele></trkpt>
+      <trkpt lat="48.1690" lon="17.0040"><ele>123</ele></trkpt>
+      <trkpt lat="48.1705" lon="17.0035"><ele>124</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- CORRECTION 2: Driver returns to highway -->
+      <!-- ============================================ -->
+
+      <trkpt lat="48.1700" lon="17.0020"><ele>123</ele></trkpt>
+      <trkpt lat="48.1690" lon="17.0000"><ele>122</ele></trkpt>
+      <trkpt lat="48.1680" lon="16.9980"><ele>121</ele></trkpt>
+      <trkpt lat="48.1670" lon="16.9960"><ele>120</ele></trkpt>
+      <trkpt lat="48.1660" lon="16.9940"><ele>119</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- PHASE 3: Back on correct route towards Vienna -->
+      <!-- Duration: ~25 seconds -->
+      <!-- ============================================ -->
+
+      <!-- Continuing on highway towards Austria -->
+      <trkpt lat="48.1655" lon="16.9910"><ele>118</ele></trkpt>
+      <trkpt lat="48.1650" lon="16.9880"><ele>117</ele></trkpt>
+      <trkpt lat="48.1648" lon="16.9850"><ele>116</ele></trkpt>
+      <trkpt lat="48.1645" lon="16.9820"><ele>115</ele></trkpt>
+      <trkpt lat="48.1642" lon="16.9790"><ele>114</ele></trkpt>
+      <trkpt lat="48.1640" lon="16.9760"><ele>113</ele></trkpt>
+      <trkpt lat="48.1638" lon="16.9730"><ele>112</ele></trkpt>
+      <trkpt lat="48.1635" lon="16.9700"><ele>111</ele></trkpt>
+      <trkpt lat="48.1632" lon="16.9670"><ele>110</ele></trkpt>
+      <trkpt lat="48.1630" lon="16.9640"><ele>109</ele></trkpt>
+      <trkpt lat="48.1628" lon="16.9610"><ele>108</ele></trkpt>
+      <trkpt lat="48.1625" lon="16.9580"><ele>107</ele></trkpt>
+      <trkpt lat="48.1622" lon="16.9550"><ele>106</ele></trkpt>
+      <trkpt lat="48.1620" lon="16.9520"><ele>105</ele></trkpt>
+      <trkpt lat="48.1618" lon="16.9490"><ele>104</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- WRONG TURN 3: Driver exits too early, goes south -->
+      <!-- Duration: ~15 seconds -->
+      <!-- ============================================ -->
+
+      <!-- Wrong turn - early exit going south -->
+      <trkpt lat="48.1610" lon="16.9480"><ele>104</ele></trkpt>
+      <trkpt lat="48.1595" lon="16.9475"><ele>105</ele></trkpt>
+      <trkpt lat="48.1580" lon="16.9470"><ele>106</ele></trkpt>
+      <trkpt lat="48.1565" lon="16.9465"><ele>107</ele></trkpt>
+      <trkpt lat="48.1550" lon="16.9460"><ele>108</ele></trkpt>
+      <trkpt lat="48.1535" lon="16.9455"><ele>109</ele></trkpt>
+      <trkpt lat="48.1520" lon="16.9450"><ele>110</ele></trkpt>
+      <trkpt lat="48.1505" lon="16.9445"><ele>111</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- CORRECTION 3: Driver returns to route -->
+      <!-- ============================================ -->
+
+      <trkpt lat="48.1510" lon="16.9420"><ele>110</ele></trkpt>
+      <trkpt lat="48.1520" lon="16.9400"><ele>109</ele></trkpt>
+      <trkpt lat="48.1530" lon="16.9380"><ele>108</ele></trkpt>
+      <trkpt lat="48.1540" lon="16.9360"><ele>107</ele></trkpt>
+      <trkpt lat="48.1550" lon="16.9340"><ele>106</ele></trkpt>
+
+      <!-- ============================================ -->
+      <!-- PHASE 4: Final stretch towards Vienna -->
+      <!-- Duration: ~25 seconds -->
+      <!-- ============================================ -->
+
+      <!-- Continuing towards Austrian border -->
+      <trkpt lat="48.1555" lon="16.9310"><ele>105</ele></trkpt>
+      <trkpt lat="48.1560" lon="16.9280"><ele>104</ele></trkpt>
+      <trkpt lat="48.1565" lon="16.9250"><ele>103</ele></trkpt>
+      <trkpt lat="48.1570" lon="16.9220"><ele>102</ele></trkpt>
+      <trkpt lat="48.1575" lon="16.9190"><ele>101</ele></trkpt>
+      <trkpt lat="48.1580" lon="16.9160"><ele>100</ele></trkpt>
+      <trkpt lat="48.1585" lon="16.9130"><ele>99</ele></trkpt>
+      <trkpt lat="48.1590" lon="16.9100"><ele>98</ele></trkpt>
+      <trkpt lat="48.1595" lon="16.9070"><ele>97</ele></trkpt>
+      <trkpt lat="48.1600" lon="16.9040"><ele>96</ele></trkpt>
+      <trkpt lat="48.1605" lon="16.9010"><ele>95</ele></trkpt>
+      <trkpt lat="48.1610" lon="16.8980"><ele>94</ele></trkpt>
+      <trkpt lat="48.1615" lon="16.8950"><ele>93</ele></trkpt>
+      <trkpt lat="48.1620" lon="16.8920"><ele>92</ele></trkpt>
+      <trkpt lat="48.1625" lon="16.8890"><ele>91</ele></trkpt>
+      <!-- Near Austrian border -->
+      <trkpt lat="48.1630" lon="16.8860"><ele>90</ele></trkpt>
+      <trkpt lat="48.1635" lon="16.8830"><ele>89</ele></trkpt>
+      <trkpt lat="48.1640" lon="16.8800"><ele>88</ele></trkpt>
+      <trkpt lat="48.1645" lon="16.8770"><ele>87</ele></trkpt>
+      <trkpt lat="48.1650" lon="16.8740"><ele>86</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

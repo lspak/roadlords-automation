@@ -1,0 +1,50 @@
+# Roadlords Automation - Main Configuration
+
+app:
+  package: com.roadlords.android
+  activity: .MainActivity
+  apk_path: ./apps/roadlords.apk
+
+appium:
+  host: localhost
+  port: 4723
+  base_path: ""
+
+timeouts:
+  implicit_wait: 10
+  explicit_wait: 30
+  page_load: 60
+  gps_update_interval: 2  # seconds
+
+gps:
+  default_location:
+    latitude: 48.1486
+    longitude: 17.1077
+    altitude: 134
+  bratislava:
+    latitude: 48.1486
+    longitude: 17.1077
+  vienna:
+    latitude: 48.2082
+    longitude: 16.3738
+  prague:
+    latitude: 50.0755
+    longitude: 14.4378
+
+test_data:
+  default_truck_profile:
+    height: 4.0  # meters
+    width: 2.55
+    length: 16.5
+    weight: 40000  # kg
+    axles: 5
+
+logging:
+  level: INFO
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  file: logs/test_run.log
+
+screenshots:
+  on_failure: true
+  on_step: false
+  directory: reports/screenshots
