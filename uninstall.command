@@ -79,9 +79,17 @@ else
     echo "   (not found)"
 fi
 
-# Remove ANDROID_HOME from shell profile
+# Remove ANDROID_HOME and .android-sdk folder
 echo ""
-echo "[6/7] Cleaning up ANDROID_HOME from shell profile..."
+echo "[6/7] Cleaning up ANDROID_HOME..."
+
+# Remove .android-sdk folder created by setup
+if [ -d "$HOME/.android-sdk" ]; then
+    rm -rf "$HOME/.android-sdk"
+    echo "   ✅ Removed $HOME/.android-sdk"
+fi
+
+# Remove from shell profile
 SHELL_PROFILE="$HOME/.zprofile"
 if [[ "$SHELL" == *"bash"* ]]; then
     SHELL_PROFILE="$HOME/.bash_profile"

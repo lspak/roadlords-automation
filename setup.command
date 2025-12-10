@@ -80,30 +80,59 @@ fi
 # Set ANDROID_HOME for Appium (required!)
 echo ""
 echo "📦 Setting up ANDROID_HOME..."
-ANDROID_HOME_PATH="/opt/homebrew/share/android-commandlinetools"
-if [ ! -d "$ANDROID_HOME_PATH" ]; then
-    # Fallback to platform-tools location
-    ANDROID_HOME_PATH="$(dirname $(dirname $(which adb)))"
+
+# Find where ADB actually is
+ADB_PATH=$(which adb 2>/dev/null)
+if [ -n "$ADB_PATH" ]; then
+    # ADB is at e.g. /opt/homebrew/bin/adb
+    # We need ANDROID_HOME to be parent of a 'platform-tools' folder containing adb
+    # So we create a symlink structure that Appium expects
+
+    ADB_DIR=$(dirname "$ADB_PATH")
+
+    # Create a fake Android SDK structure for Appium
+    ANDROID_HOME_PATH="$HOME/.android-sdk"
+    mkdir -p "$ANDROID_HOME_PATH/platform-tools"
+
+    # Symlink adb to the expected location
+    if [ ! -L "$ANDROID_HOME_PATH/platform-tools/adb" ]; then
+        ln -sf "$ADB_PATH" "$ANDROID_HOME_PATH/platform-tools/adb"
+    fi
+
+    # Also link other platform-tools binaries if they exist
+    for tool in fastboot; do
+        TOOL_PATH=$(which $tool 2>/dev/null)
+        if [ -n "$TOOL_PATH" ] && [ ! -L "$ANDROID_HOME_PATH/platform-tools/$tool" ]; then
+            ln -sf "$TOOL_PATH" "$ANDROID_HOME_PATH/platform-tools/$tool"
+        fi
+    done
+
+    echo "   Created Android SDK structure at $ANDROID_HOME_PATH"
+else
+    echo "   ⚠️  ADB not found - install with: brew install --cask android-platform-tools"
+    ANDROID_HOME_PATH=""
 fi
 
 # Add to shell profile
-SHELL_PROFILE="$HOME/.zprofile"
-if [[ "$SHELL" == *"bash"* ]]; then
-    SHELL_PROFILE="$HOME/.bash_profile"
-fi
+if [ -n "$ANDROID_HOME_PATH" ]; then
+    SHELL_PROFILE="$HOME/.zprofile"
+    if [[ "$SHELL" == *"bash"* ]]; then
+        SHELL_PROFILE="$HOME/.bash_profile"
+    fi
 
-if ! grep -q "ANDROID_HOME" "$SHELL_PROFILE" 2>/dev/null; then
+    # Remove old ANDROID_HOME entries first
+    if [ -f "$SHELL_PROFILE" ]; then
+        grep -v "ANDROID_HOME" "$SHELL_PROFILE" | grep -v "# Android SDK for Appium" > "$SHELL_PROFILE.tmp" 2>/dev/null
+        mv "$SHELL_PROFILE.tmp" "$SHELL_PROFILE" 2>/dev/null
+    fi
+
     echo "" >> "$SHELL_PROFILE"
     echo "# Android SDK for Appium" >> "$SHELL_PROFILE"
     echo "export ANDROID_HOME=\"$ANDROID_HOME_PATH\"" >> "$SHELL_PROFILE"
-    echo "export PATH=\"\$ANDROID_HOME/platform-tools:\$PATH\"" >> "$SHELL_PROFILE"
     echo "   ✅ Added ANDROID_HOME to $SHELL_PROFILE"
 
     # Also export for current session
     export ANDROID_HOME="$ANDROID_HOME_PATH"
-    export PATH="$ANDROID_HOME/platform-tools:$PATH"
-else
-    echo "   ✅ ANDROID_HOME already configured"
 fi
 
 # ============================================

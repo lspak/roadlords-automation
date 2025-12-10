@@ -41,14 +41,17 @@ if [ ! -f "venv/.installed" ]; then
 fi
 
 # Set ANDROID_HOME if not set (required for Appium)
-if [ -z "$ANDROID_HOME" ]; then
-    # Try common locations
-    if [ -d "/opt/homebrew/share/android-commandlinetools" ]; then
-        export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+if [ -z "$ANDROID_HOME" ] || [ ! -d "$ANDROID_HOME/platform-tools" ]; then
+    # Use the SDK structure created by setup.command
+    if [ -d "$HOME/.android-sdk/platform-tools" ]; then
+        export ANDROID_HOME="$HOME/.android-sdk"
     elif command -v adb &> /dev/null; then
-        export ANDROID_HOME="$(dirname $(dirname $(which adb)))"
+        # Create SDK structure on-the-fly if needed
+        ADB_PATH=$(which adb)
+        mkdir -p "$HOME/.android-sdk/platform-tools"
+        ln -sf "$ADB_PATH" "$HOME/.android-sdk/platform-tools/adb" 2>/dev/null
+        export ANDROID_HOME="$HOME/.android-sdk"
     fi
-    export PATH="$ANDROID_HOME/platform-tools:$PATH"
 fi
 
 # Check ADB
