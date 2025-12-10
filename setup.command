@@ -77,6 +77,35 @@ else
     echo "   ✅ ADB already installed"
 fi
 
+# Set ANDROID_HOME for Appium (required!)
+echo ""
+echo "📦 Setting up ANDROID_HOME..."
+ANDROID_HOME_PATH="/opt/homebrew/share/android-commandlinetools"
+if [ ! -d "$ANDROID_HOME_PATH" ]; then
+    # Fallback to platform-tools location
+    ANDROID_HOME_PATH="$(dirname $(dirname $(which adb)))"
+fi
+
+# Add to shell profile
+SHELL_PROFILE="$HOME/.zprofile"
+if [[ "$SHELL" == *"bash"* ]]; then
+    SHELL_PROFILE="$HOME/.bash_profile"
+fi
+
+if ! grep -q "ANDROID_HOME" "$SHELL_PROFILE" 2>/dev/null; then
+    echo "" >> "$SHELL_PROFILE"
+    echo "# Android SDK for Appium" >> "$SHELL_PROFILE"
+    echo "export ANDROID_HOME=\"$ANDROID_HOME_PATH\"" >> "$SHELL_PROFILE"
+    echo "export PATH=\"\$ANDROID_HOME/platform-tools:\$PATH\"" >> "$SHELL_PROFILE"
+    echo "   ✅ Added ANDROID_HOME to $SHELL_PROFILE"
+
+    # Also export for current session
+    export ANDROID_HOME="$ANDROID_HOME_PATH"
+    export PATH="$ANDROID_HOME/platform-tools:$PATH"
+else
+    echo "   ✅ ANDROID_HOME already configured"
+fi
+
 # ============================================
 # 5. Install Appium
 # ============================================

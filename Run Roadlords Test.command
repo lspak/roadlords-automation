@@ -40,6 +40,17 @@ if [ ! -f "venv/.installed" ]; then
     touch venv/.installed
 fi
 
+# Set ANDROID_HOME if not set (required for Appium)
+if [ -z "$ANDROID_HOME" ]; then
+    # Try common locations
+    if [ -d "/opt/homebrew/share/android-commandlinetools" ]; then
+        export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
+    elif command -v adb &> /dev/null; then
+        export ANDROID_HOME="$(dirname $(dirname $(which adb)))"
+    fi
+    export PATH="$ANDROID_HOME/platform-tools:$PATH"
+fi
+
 # Check ADB
 if ! command -v adb &> /dev/null; then
     echo "⚠️  ADB not found in PATH"
