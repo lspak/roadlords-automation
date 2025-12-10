@@ -60,3 +60,6 @@ android-gps-mock/app/build/
 
 # Claude
 CLAUDE.md
+
+# Generated PDFs (build from .md source)
+*.pdf
