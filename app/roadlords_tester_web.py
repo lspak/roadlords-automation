@@ -351,8 +351,13 @@ def find_appium():
 @app.route('/start-appium', methods=['POST'])
 def start_appium():
     try:
-        subprocess.run(["pkill", "-f", "appium"], capture_output=True)
-        time.sleep(1)
+        # Check if Appium is already running - don't kill it!
+        try:
+            result = subprocess.run(["pgrep", "-f", "appium"], capture_output=True, timeout=5)
+            if result.returncode == 0:
+                return jsonify({"success": True, "message": "Appium already running"})
+        except:
+            pass
 
         appium_path = find_appium()
         if not appium_path:
