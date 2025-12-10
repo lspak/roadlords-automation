@@ -39,7 +39,12 @@ This will install all dependencies (Python, Node, Appium, ADB, GPS Mock APK).
    ```
    - Required to clear GPS provider state on first setup
 
-3. **Ready to test!** Now you can run tests normally.
+3. **Enable GPS Mock notifications (Android 13+):**
+   - When GPS Mock app starts for the first time, allow notification permission
+   - Or manually: **Settings → Apps → GPS Mock → Notifications → Enable**
+   - Required for foreground service to work reliably
+
+4. **Ready to test!** Now you can run tests normally.
 
 ### Option 2: Manual Setup
 
@@ -190,6 +195,7 @@ cat ~/.appium-server.log
 - Node.js not in PATH: Restart terminal after setup
 - Port 4723 already in use: Kill existing Appium: `pkill -f appium`
 - ANDROID_HOME not set: Run setup.command again or manually set in shell profile
+- **GUI won't start Appium** (port appears busy but no process found): Restart your computer to clear zombie sockets
 
 ### Test fails immediately
 

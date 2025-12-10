@@ -78,6 +78,11 @@ pip install flask
    - *Nutné pri prvom setupe na vyčistenie GPS provider stavu*
    - Počkaj kým sa telefón reštartuje
 
+5. **⚠️ DÔLEŽITÉ: Povol notifikácie GPS Mock (Android 13+):**
+   - Pri prvom spustení GPS Mock aplikácie povoľ notifikácie
+   - Alebo manuálne: **Settings → Apps → GPS Mock → Notifications → Povoliť**
+   - *Nutné pre stabilný beh foreground service*
+
 ---
 
 ## Spustenie testu
@@ -102,6 +107,7 @@ pip install flask
 - Klikni "Start Appium" v aplikácii
 - Alebo spusti `appium` v terminále
 - Check logs: `cat ~/.appium-server.log`
+- **Ak GUI nespúšťa Appium** (port obsadený, ale žiadny proces): **Reštartuj počítač** - zombie socket problém
 
 ### GPS Mock nefunguje (auto sa nehýbe na mape)
 
