@@ -401,14 +401,17 @@ def start_appium():
         if os.path.isdir(android_sdk):
             env["ANDROID_HOME"] = android_sdk
 
-        subprocess.Popen(
-            [appium_path, "--allow-insecure", "chromedriver_autodownload"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            start_new_session=True,
-            env=env
-        )
-        return jsonify({"success": True, "message": f"Appium starting from {appium_path}"})
+        # Start Appium and capture any startup errors
+        log_file = os.path.expanduser("~/.appium-server.log")
+        with open(log_file, "w") as f:
+            subprocess.Popen(
+                [appium_path, "--allow-insecure", "chromedriver_autodownload"],
+                stdout=f,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+                env=env
+            )
+        return jsonify({"success": True, "message": f"Appium starting from {appium_path} (log: {log_file})"})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)})
 
