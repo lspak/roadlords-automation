@@ -345,6 +345,13 @@ def create_driver() -> webdriver.Remote:
     logger.info("Connecting to Appium...")
     driver = webdriver.Remote(APPIUM_SERVER, options=options)
     logger.info("Connected")
+
+    # Force landscape orientation (test coordinates are designed for landscape)
+    try:
+        driver.orientation = "LANDSCAPE"
+        logger.info("Set orientation to LANDSCAPE")
+    except Exception as e:
+        logger.warning(f"Could not set orientation: {e}")
     return driver
 
 
