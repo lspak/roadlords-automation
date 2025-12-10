@@ -14,6 +14,7 @@ echo "  • Appium + UiAutomator2 driver"
 echo "  • Android Platform Tools (ADB)"
 echo "  • Node.js"
 echo "  • Python 3"
+echo "  • ANDROID_HOME from shell profile"
 echo "  • Homebrew (optional)"
 echo ""
 echo "WARNING: This may affect other projects using these tools!"
@@ -69,7 +70,7 @@ fi
 
 # Remove local venv
 echo ""
-echo "[5/6] Removing local virtual environment..."
+echo "[5/7] Removing local virtual environment..."
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ -d "$DIR/venv" ]; then
     rm -rf "$DIR/venv"
@@ -78,9 +79,34 @@ else
     echo "   (not found)"
 fi
 
+# Remove ANDROID_HOME from shell profile
+echo ""
+echo "[6/7] Cleaning up ANDROID_HOME from shell profile..."
+SHELL_PROFILE="$HOME/.zprofile"
+if [[ "$SHELL" == *"bash"* ]]; then
+    SHELL_PROFILE="$HOME/.bash_profile"
+fi
+
+if [ -f "$SHELL_PROFILE" ]; then
+    # Remove ANDROID_HOME lines added by setup
+    if grep -q "ANDROID_HOME" "$SHELL_PROFILE" 2>/dev/null; then
+        # Create backup
+        cp "$SHELL_PROFILE" "$SHELL_PROFILE.backup"
+        # Remove the lines we added
+        grep -v "ANDROID_HOME" "$SHELL_PROFILE" | grep -v "# Android SDK for Appium" > "$SHELL_PROFILE.tmp"
+        mv "$SHELL_PROFILE.tmp" "$SHELL_PROFILE"
+        echo "   ✅ ANDROID_HOME removed from $SHELL_PROFILE"
+        echo "   (backup saved as $SHELL_PROFILE.backup)"
+    else
+        echo "   (ANDROID_HOME not found in profile)"
+    fi
+else
+    echo "   (shell profile not found)"
+fi
+
 # Homebrew (optional)
 echo ""
-echo "[6/6] Homebrew..."
+echo "[7/7] Homebrew..."
 read -p "Remove Homebrew too? This affects ALL brew packages! (y/N): " remove_brew
 
 if [[ "$remove_brew" == "y" || "$remove_brew" == "Y" ]]; then
