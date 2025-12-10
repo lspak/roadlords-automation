@@ -401,10 +401,11 @@ def run_test():
 
         # Start GPS mock and set position BEFORE launching app
         gps.start_service()
-        gps.set_location(START_LAT, START_LON)
-        time.sleep(2)
-        gps.set_location(START_LAT, START_LON)
-        time.sleep(2)
+        # Set location multiple times to ensure it's registered
+        for _ in range(5):
+            gps.set_location(START_LAT, START_LON)
+            time.sleep(1)
+        logger.info(f"GPS set to starting position: {START_LAT}, {START_LON}")
 
         # --- Step 2: Push GPX file ---
         logger.info("=" * 50)
@@ -424,6 +425,11 @@ def run_test():
 
         # Don't restart - app was just launched fresh
         time.sleep(3)
+
+        # Set GPS again after app launch to override any cached location
+        for _ in range(3):
+            gps.set_location(START_LAT, START_LON)
+            time.sleep(1)
 
         # Cancel any previous route dialog first
         app.cancel_previous_route()
