@@ -136,7 +136,43 @@ if [ -n "$ANDROID_HOME_PATH" ]; then
 fi
 
 # ============================================
-# 5. Install Appium
+# 5. Install Java 17 (required for building GPS Mock APK)
+# ============================================
+echo ""
+echo "📦 Checking Java 17..."
+if ! /opt/homebrew/opt/openjdk@17/bin/java -version &> /dev/null && ! /usr/local/opt/openjdk@17/bin/java -version &> /dev/null; then
+    echo "   Installing Java 17..."
+    brew install openjdk@17
+else
+    echo "   ✅ Java 17 already installed"
+fi
+
+# Find Java 17 path
+if [ -d "/opt/homebrew/opt/openjdk@17" ]; then
+    JAVA17_HOME="/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+elif [ -d "/usr/local/opt/openjdk@17" ]; then
+    JAVA17_HOME="/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+fi
+
+# ============================================
+# 6. Build GPS Mock APK (if needed)
+# ============================================
+echo ""
+echo "📦 Building GPS Mock APK..."
+if [ -f "android-gps-mock/gradlew" ] && [ -n "$JAVA17_HOME" ]; then
+    cd android-gps-mock
+    JAVA_HOME="$JAVA17_HOME" ./gradlew assembleDebug --quiet 2>/dev/null || echo "   ⚠️  Build failed - using pre-built APK"
+    if [ -f "app/build/outputs/apk/debug/app-debug.apk" ]; then
+        cp app/build/outputs/apk/debug/app-debug.apk gps-mock.apk
+        echo "   ✅ GPS Mock APK built successfully"
+    fi
+    cd ..
+else
+    echo "   Using pre-built GPS Mock APK"
+fi
+
+# ============================================
+# 7. Install Appium
 # ============================================
 echo ""
 echo "📦 Checking Appium..."
@@ -148,7 +184,7 @@ else
 fi
 
 # ============================================
-# 6. Install Appium UiAutomator2 driver
+# 8. Install Appium UiAutomator2 driver
 # ============================================
 echo ""
 echo "📦 Checking Appium UiAutomator2 driver..."
@@ -160,7 +196,7 @@ else
 fi
 
 # ============================================
-# 7. Create Python virtual environment
+# 9. Create Python virtual environment
 # ============================================
 echo ""
 echo "📦 Setting up Python environment..."
@@ -179,7 +215,7 @@ pip install -q flask
 touch venv/.installed
 
 # ============================================
-# 8. Install GPS Mock APK (if device connected)
+# 10. Install GPS Mock APK (if device connected)
 # ============================================
 echo ""
 echo "📱 Checking for connected Android device..."
@@ -190,6 +226,10 @@ if adb devices 2>/dev/null | grep -q "device$"; then
     if [ -f "android-gps-mock/gps-mock.apk" ]; then
         echo "   Installing GPS Mock app..."
         adb install -r android-gps-mock/gps-mock.apk 2>/dev/null || echo "   (Already installed or install failed)"
+
+        # Enable notifications for GPS Mock (required on Android 13+)
+        echo "   Enabling GPS Mock notifications..."
+        adb shell cmd appops set com.roadlords.gpsmock POST_NOTIFICATIONS allow 2>/dev/null || true
     fi
 else
     echo "   ⚠️  No device connected - connect device later and install GPS Mock manually"

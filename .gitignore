@@ -50,6 +50,11 @@ dist/
 build/
 *.egg-info/
 
+# Gradle
+.gradle/
+android-gps-mock/.gradle/
+android-gps-mock/app/build/
+
 # Serena
 .serena/
 
