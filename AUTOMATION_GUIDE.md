@@ -202,6 +202,47 @@ S debug buildom môžete:
 5. **Zvážiť Espresso/Compose Testing** pre stabilnejšie testy
 
 
+## 📱 Podporované platformy
+
+Framework podporuje viacero platforiem - stačí prepnúť konfiguráciu:
+
+### Real Device (fyzický telefón)
+```bash
+PLATFORM=real_device pytest tests/e2e/ -v
+```
+- Konfigurácia: `config/capabilities/real_device.yaml`
+- Najpresnejšie výsledky, reálne podmienky
+- Vyžaduje fyzicky pripojený telefón cez USB
+
+### Emulator (Android Studio AVD)
+```bash
+PLATFORM=emulator pytest tests/e2e/ -v
+```
+- Konfigurácia: `config/capabilities/emulator.yaml`
+- Dobré pre vývoj a debugging
+- GPS mock funguje natívne cez `adb emu geo fix`
+- Nevyžaduje fyzické zariadenie
+
+### BrowserStack (cloud)
+```bash
+BROWSERSTACK_USER=xxx BROWSERSTACK_KEY=yyy PLATFORM=browserstack pytest tests/e2e/ -v
+```
+- Konfigurácia: `config/capabilities/browserstack.yaml`
+- Testovanie na rôznych zariadeniach bez ich vlastnenia
+- Automatické video nahrávanie, logy, screenshots
+- Vstavaná GPS simulácia
+- Vhodné pre CI/CD pipeline
+
+### Porovnanie
+
+| Platforma | Rýchlosť | Presnosť | Náklady | CI/CD |
+|-----------|----------|----------|---------|-------|
+| Real Device | ⭐⭐ | ⭐⭐⭐ | Jednorazový nákup | Potrebuje dedicated machine |
+| Emulator | ⭐⭐⭐ | ⭐⭐ | Zadarmo | Jednoduché |
+| BrowserStack | ⭐⭐ | ⭐⭐⭐ | Mesačný poplatok | Ideálne |
+
+---
+
 ## 📈 Ako to škálovať
 
 ### Level 1: Lokálne testovanie (čo máte teraz)
