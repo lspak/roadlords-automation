@@ -405,7 +405,7 @@ def start_appium():
         log_file = os.path.expanduser("~/.appium-server.log")
         with open(log_file, "w") as f:
             subprocess.Popen(
-                [appium_path, "--allow-insecure", "chromedriver_autodownload"],
+                [appium_path, "--allow-insecure", "uiautomator2:chromedriver_autodownload"],
                 stdout=f,
                 stderr=subprocess.STDOUT,
                 start_new_session=True,
