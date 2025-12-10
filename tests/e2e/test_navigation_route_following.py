@@ -53,7 +53,19 @@ logger = logging.getLogger(__name__)
 # =============================================================================
 
 APPIUM_SERVER = "http://localhost:4723"
-DEVICE_UDID = "SCAIOC641923K8V"
+def get_connected_device():
+    """Auto-detect connected Android device."""
+    import subprocess
+    result = subprocess.run(["adb", "devices"], capture_output=True, text=True)
+    lines = result.stdout.strip().split("\n")
+    for line in lines[1:]:  # Skip header
+        if "\tdevice" in line:
+            device_id = line.split("\t")[0]
+            print(f"📱 Auto-detected device: {device_id}")
+            return device_id
+    raise RuntimeError("No Android device connected! Connect a device and enable USB debugging.")
+
+DEVICE_UDID = get_connected_device()
 
 # Route: Pifflova 2 to Sustekova 5 (local route in Bratislava ~4km)
 START_LAT = 48.1270
