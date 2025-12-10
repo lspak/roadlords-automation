@@ -1,0 +1,94 @@
+{
+  "captured_at": "2025-12-09T11:04:09.376566",
+  "elements": {
+    "search_opened": [
+      {
+        "name": "search_bar",
+        "text": "Search",
+        "content_desc": "null",
+        "class_name": "android.widget.EditText",
+        "visible": true,
+        "enabled": true,
+        "bounds": {
+          "x": 147,
+          "y": 105,
+          "width": 984,
+          "height": 158
+        },
+        "resource_id": "com.roadlords.android:id/inputField",
+        "checkpoint": "search_opened"
+      }
+    ],
+    "search_results": [],
+    "destination_selected": [],
+    "navigation_started": [],
+    "arrived": []
+  },
+  "regions": {
+    "search_opened": [
+      {
+        "name": "search_area",
+        "checkpoint": "search_opened",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 500
+        },
+        "screenshot_path": "/Users/lspak/Projects/roadlords-automation/reports/ui_baseline/search_opened_20251209_110135.png"
+      }
+    ],
+    "search_results": [
+      {
+        "name": "results_list",
+        "checkpoint": "search_results",
+        "bounds": {
+          "x": 0,
+          "y": 300,
+          "width": 1440,
+          "height": 800
+        },
+        "screenshot_path": "/Users/lspak/Projects/roadlords-automation/reports/ui_baseline/search_results_20251209_110146.png"
+      }
+    ],
+    "destination_selected": [
+      {
+        "name": "destination_panel",
+        "checkpoint": "destination_selected",
+        "bounds": {
+          "x": 0,
+          "y": 400,
+          "width": 1440,
+          "height": 800
+        },
+        "screenshot_path": "/Users/lspak/Projects/roadlords-automation/reports/ui_baseline/destination_selected_20251209_110152.png"
+      }
+    ],
+    "navigation_started": [
+      {
+        "name": "navigation_header",
+        "checkpoint": "navigation_started",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 300
+        },
+        "screenshot_path": "/Users/lspak/Projects/roadlords-automation/reports/ui_baseline/navigation_started_20251209_110209.png"
+      }
+    ],
+    "arrived": [
+      {
+        "name": "arrival_dialog",
+        "checkpoint": "arrived",
+        "bounds": {
+          "x": 200,
+          "y": 400,
+          "width": 1040,
+          "height": 600
+        },
+        "screenshot_path": "/Users/lspak/Projects/roadlords-automation/reports/ui_baseline/arrived_20251209_110403.png"
+      }
+    ]
+  }
+}

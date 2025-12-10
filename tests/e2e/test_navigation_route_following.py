@@ -71,7 +71,16 @@ BASELINE_SECONDS = 20   # Initial baseline period
 GPS_SPEED_KMH = 50.0    # GPS playback speed
 
 # UI Verification: None, "capture", or "verify"
+# Auto-switches to "capture" if baseline doesn't exist
 UI_VERIFY_MODE = "verify"
+
+def get_ui_verify_mode():
+    """Auto-detect UI verify mode - use capture if no baseline exists"""
+    baseline_file = Path(__file__).parent.parent.parent / "reports/ui_baseline/baseline.json"
+    if UI_VERIFY_MODE == "verify" and not baseline_file.exists():
+        print("⚠️  No baseline found - switching to 'capture' mode for first run")
+        return "capture"
+    return UI_VERIFY_MODE
 
 
 # =============================================================================
@@ -353,10 +362,11 @@ def run_test():
 
     try:
         # Initialize UI Verifier if enabled
-        if UI_VERIFY_MODE:
+        actual_ui_mode = get_ui_verify_mode()
+        if actual_ui_mode:
             ui_baseline_dir = Path(__file__).parent.parent.parent / "reports/ui_baseline"
-            ui_verifier = UIVerifier(ui_baseline_dir, mode=UI_VERIFY_MODE)
-            logger.info(f"UI Verification: {UI_VERIFY_MODE}")
+            ui_verifier = UIVerifier(ui_baseline_dir, mode=actual_ui_mode)
+            logger.info(f"UI Verification: {actual_ui_mode}")
 
         # --- Step 1: Force stop Roadlords and set GPS ---
         logger.info("=" * 50)

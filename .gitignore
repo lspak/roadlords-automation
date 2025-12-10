@@ -17,6 +17,8 @@ ENV/
 
 # Test artifacts
 reports/
+!reports/ui_baseline/
+!reports/ui_baseline/baseline.json
 logs/
 screenshots/
 *.log
