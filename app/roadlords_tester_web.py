@@ -322,26 +322,55 @@ def find_appium():
     """Find appium executable - check common locations"""
     # Common paths where appium might be installed
     possible_paths = [
-        "appium",  # In PATH
-        "/usr/local/bin/appium",
-        "/opt/homebrew/bin/appium",  # Apple Silicon
+        "/opt/homebrew/bin/appium",  # Apple Silicon (most common)
+        "/usr/local/bin/appium",      # Intel Mac
         os.path.expanduser("~/.npm-global/bin/appium"),
         os.path.expanduser("~/node_modules/.bin/appium"),
     ]
 
     # Also try to find via npm
     try:
-        result = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True, timeout=5)
+        result = subprocess.run(
+            ["/opt/homebrew/bin/npm", "root", "-g"],
+            capture_output=True, text=True, timeout=5
+        )
         if result.returncode == 0:
             npm_global = result.stdout.strip()
             possible_paths.append(os.path.join(os.path.dirname(npm_global), "bin", "appium"))
     except:
         pass
 
+    # Try with /usr/local/bin/npm too
+    try:
+        result = subprocess.run(
+            ["/usr/local/bin/npm", "root", "-g"],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0:
+            npm_global = result.stdout.strip()
+            possible_paths.append(os.path.join(os.path.dirname(npm_global), "bin", "appium"))
+    except:
+        pass
+
+    # Also try 'which appium' with proper PATH
+    try:
+        env = os.environ.copy()
+        env["PATH"] = "/opt/homebrew/bin:/usr/local/bin:" + env.get("PATH", "")
+        result = subprocess.run(
+            ["which", "appium"],
+            capture_output=True, text=True, timeout=5, env=env
+        )
+        if result.returncode == 0:
+            possible_paths.insert(0, result.stdout.strip())
+    except:
+        pass
+
     for path in possible_paths:
+        if not path:
+            continue
         try:
-            result = subprocess.run([path, "--version"], capture_output=True, timeout=5)
-            if result.returncode == 0:
+            # Check if file exists and is executable
+            if os.path.isfile(path) and os.access(path, os.X_OK):
                 return path
         except:
             continue
@@ -363,9 +392,14 @@ def start_appium():
         if not appium_path:
             return jsonify({"success": False, "message": "Appium not found! Run setup.command first or install with: npm install -g appium"})
 
-        # Set PATH to include common locations
+        # Set up environment for Appium
         env = os.environ.copy()
-        env["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + env.get("PATH", "")
+        env["PATH"] = "/opt/homebrew/bin:/usr/local/bin:" + env.get("PATH", "")
+
+        # Set ANDROID_HOME (required for Appium)
+        android_sdk = os.path.expanduser("~/.android-sdk")
+        if os.path.isdir(android_sdk):
+            env["ANDROID_HOME"] = android_sdk
 
         subprocess.Popen(
             [appium_path, "--allow-insecure", "chromedriver_autodownload"],
@@ -374,7 +408,7 @@ def start_appium():
             start_new_session=True,
             env=env
         )
-        return jsonify({"success": True, "message": "Appium starting..."})
+        return jsonify({"success": True, "message": f"Appium starting from {appium_path}"})
     except Exception as e:
         return jsonify({"success": False, "message": str(e)})
 
