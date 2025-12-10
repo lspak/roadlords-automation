@@ -318,16 +318,56 @@ def status():
 
     return jsonify({"device": device, "appium": appium, "has_report": has_report})
 
+def find_appium():
+    """Find appium executable - check common locations"""
+    # Common paths where appium might be installed
+    possible_paths = [
+        "appium",  # In PATH
+        "/usr/local/bin/appium",
+        "/opt/homebrew/bin/appium",  # Apple Silicon
+        os.path.expanduser("~/.npm-global/bin/appium"),
+        os.path.expanduser("~/node_modules/.bin/appium"),
+    ]
+
+    # Also try to find via npm
+    try:
+        result = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True, timeout=5)
+        if result.returncode == 0:
+            npm_global = result.stdout.strip()
+            possible_paths.append(os.path.join(os.path.dirname(npm_global), "bin", "appium"))
+    except:
+        pass
+
+    for path in possible_paths:
+        try:
+            result = subprocess.run([path, "--version"], capture_output=True, timeout=5)
+            if result.returncode == 0:
+                return path
+        except:
+            continue
+
+    return None
+
 @app.route('/start-appium', methods=['POST'])
 def start_appium():
     try:
         subprocess.run(["pkill", "-f", "appium"], capture_output=True)
         time.sleep(1)
+
+        appium_path = find_appium()
+        if not appium_path:
+            return jsonify({"success": False, "message": "Appium not found! Run setup.command first or install with: npm install -g appium"})
+
+        # Set PATH to include common locations
+        env = os.environ.copy()
+        env["PATH"] = "/usr/local/bin:/opt/homebrew/bin:" + env.get("PATH", "")
+
         subprocess.Popen(
-            ["appium", "--allow-insecure", "chromedriver_autodownload"],
+            [appium_path, "--allow-insecure", "chromedriver_autodownload"],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
-            start_new_session=True
+            start_new_session=True,
+            env=env
         )
         return jsonify({"success": True, "message": "Appium starting..."})
     except Exception as e:
