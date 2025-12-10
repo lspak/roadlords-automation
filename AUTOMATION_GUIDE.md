@@ -450,4 +450,92 @@ run-e2e-tests:
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
+---
+
+## ⚠️ Známé problémy a riešenia (Android 12+)
+
+### GPS Mock nefunguje
+
+**Príznaky:**
+- Test beží, ale auto sa nehýbe na mape
+- GPS Mock service crashuje
+
+**Diagnostika:**
+
+```bash
+# 1. Skontroluj či je GPS Mock nastavený ako mock location provider
+adb shell settings get secure mock_location_app
+# Má vrátiť: com.roadlords.gpsmock
+
+# 2. Skontroluj či service beží
+adb shell "ps -A | grep gpsmock"
+
+# 3. Otestuj GPS Mock manuálne
+adb shell am start -n com.roadlords.gpsmock/.MainActivity
+sleep 2
+adb shell am broadcast -a com.roadlords.gpsmock.SET --ef lat 48.127 --ef lon 17.1072 -n com.roadlords.gpsmock/.CommandReceiver
+adb shell dumpsys location | grep "last mock location"
+# Má ukázať súradnice, nie "null"
+
+# 4. Skontroluj errory v logcat
+adb logcat -d | grep -i gpsmock | tail -30
+```
+
+**Bežné chyby a riešenia:**
+
+| Error v logcat | Problém | Riešenie |
+|----------------|---------|----------|
+| `not allowed to perform MOCK_LOCATION` | GPS Mock nie je nastavený ako mock location provider | Settings → Developer Options → Select mock location app → GPS Mock |
+| `gps provider is not a test provider` | GPS provider v zlom stave | Reštartuj zariadenie: `adb reboot` |
+| `Background start not allowed` | Service nebeží | Najprv spusti: `adb shell am start -n com.roadlords.gpsmock/.MainActivity` |
+| `ForegroundServiceStartNotAllowedException` | Notifikácie zablokované (Android 13+) | Settings → Apps → GPS Mock → Notifications → Povoliť |
+| `last mock location=null` | Service beží ale neposiela lokácie | Force stop: `adb shell am force-stop com.roadlords.gpsmock`, potom spusti MainActivity |
+
+**Android 12+ špecifiká:**
+
+Android 12+ zaviedol nové bezpečnostné obmedzenia:
+- **Background service start** - broadcast receiver nemôže spustiť foreground service
+- **Notification permission** - Android 13+ vyžaduje explicitné povolenie pre notifikácie
+- **Test provider state** - GPS provider môže zostať v nekonzistentnom stave
+
+**Riešenie:**
+1. MainActivity musí spustiť service (foreground kontext)
+2. Potom broadcasty posielajú príkazy do už bežiacej service
+3. Po prvej inštalácii nutný reboot
+
+**Ak nič nepomáha:**
+```bash
+# Kompletný reset
+adb uninstall com.roadlords.gpsmock
+adb reboot
+# Počkaj na reboot
+adb install -r android-gps-mock/gps-mock.apk
+# Nastav ako mock location provider v Settings
+adb reboot
+```
+
+### Povinná manuálna konfigurácia
+
+**Po `setup.command` MUSÍŠ urobiť:**
+
+1. **Nastaviť GPS Mock ako mock location provider:**
+   - Settings → Developer Options → Select mock location app → GPS Mock
+   - *Nemožno automatizovať z bezpečnostných dôvodov Android*
+
+2. **Reštartovať zariadenie:**
+   ```bash
+   adb reboot
+   ```
+   - *Vyčistí stav GPS providera pri prvom setupu*
+
+3. **Potom môžeš spúšťať testy normálne**
+
+**Toto je jednorazové pre každé nové zariadenie.**
+
+---
+
+## 📄 Podrobný troubleshooting
+
+Viac diagnostických príkazov a riešení nájdeš v `README.md` v sekcii **## Troubleshooting**.
+
 
